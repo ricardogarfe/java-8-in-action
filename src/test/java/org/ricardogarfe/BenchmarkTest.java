@@ -1,8 +1,13 @@
 package org.ricardogarfe;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.junit.Assert;
+import org.junit.Before;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -12,6 +17,10 @@ import junit.framework.TestSuite;
  * Unit test for simple App.
  */
 public class BenchmarkTest extends TestCase {
+
+  private Group personGroup;
+  private List<Person> peopleList;
+
   /**
    * Create the test case
    *
@@ -29,6 +38,11 @@ public class BenchmarkTest extends TestCase {
     return new TestSuite(BenchmarkTest.class);
   }
 
+  @Before
+  public void setUp() {
+    personGroup = new Group();
+  }
+
   /**
    * Rigourous Test :-)
    */
@@ -36,18 +50,12 @@ public class BenchmarkTest extends TestCase {
     assertTrue(true);
   }
 
-  public void testForeach() {
-    Group personGroup = new Group();
+  public void testForVsLambda() {
 
-    personGroup.addPersonToGroup(new Person(3));
-    personGroup.addPersonToGroup(new Person(5));
-    personGroup.addPersonToGroup(new Person(7));
-    personGroup.addPersonToGroup(new Person(9));
-
-    List<Person> personList = personGroup.getPersons();
+    List<Person> peopleList = createPeopleList();
 
     long foreachStart = System.currentTimeMillis();
-    for (Person person : personList) {
+    for (Person person : peopleList) {
       System.out.println("Person Age:\t" + person.getAge());
     }
     long foreachEnd = System.currentTimeMillis();
@@ -55,7 +63,7 @@ public class BenchmarkTest extends TestCase {
     double foreachElapsedSeconds = foreachDelta / 1000.0;
 
     long lambdaForeachStart = System.currentTimeMillis();
-    personList.forEach(person -> System.out.println("Person Age:\t" + person.getAge()));
+    peopleList.forEach(person -> System.out.println("Person Age:\t" + person.getAge()));
     long lambdaForeachEnd = System.currentTimeMillis();
     long lambdaForeachDelta = lambdaForeachEnd - lambdaForeachStart;
     double lambdaForeachElapsedSeconds = lambdaForeachDelta / 1000.0;
@@ -65,5 +73,47 @@ public class BenchmarkTest extends TestCase {
             + foreachStart + "\n End:\t" + foreachEnd + "\nLambda Foreach elapsed time:\t" + lambdaForeachElapsedSeconds
             + "\n Start:\t" + lambdaForeachStart + "\n End:\t" + lambdaForeachEnd,
         foreachElapsedSeconds > lambdaForeachElapsedSeconds);
+  }
+
+  public void testForVsStream() {
+
+    peopleList = createPeopleList();
+
+    long streamStart = System.currentTimeMillis();
+
+    List<Person> adultPeopleListFromStream = peopleList.stream().filter(person -> person.getAge() > 18).collect(Collectors.toList());
+
+    long streamEnd = System.currentTimeMillis();
+    long streamDelta = streamEnd - streamStart;
+    double streamElapsedSeconds = streamDelta / 1000.0;
+
+    System.out.println("Adult people stream method:\t" + adultPeopleListFromStream.size());
+
+    long forStart = System.currentTimeMillis();
+
+    List<Person> adultPersonsList = new ArrayList<Person>();
+    for (Person person : peopleList) {
+      if (person.getAge() > 18) {
+        adultPersonsList.add(person);
+      }
+    }
+    long forEnd = System.currentTimeMillis();
+    long forDelta = forEnd - forStart;
+    double forElapsedSeconds = forDelta / 1000.0;
+
+    System.out.println("Adult people for method:\t" + adultPersonsList.size());
+
+    Assert.assertTrue("For is faster than Stream !" + "\nFor elapsed time:\t" + forElapsedSeconds + "\n Start:\t"
+        + forStart + "\n End:\t" + forEnd + "\nStream elapsed time:\t" + streamElapsedSeconds + "\n Start:\t"
+        + streamStart + "\n End:\t" + streamEnd, forElapsedSeconds > streamElapsedSeconds);
+
+  }
+
+  public List<Person> createPeopleList() {
+
+    peopleList = Arrays.asList(new Person("Joe", 18), new Person("Jim", 22), new Person("John", 30),
+        new Person("Martin", 16));
+
+    return peopleList;
   }
 }

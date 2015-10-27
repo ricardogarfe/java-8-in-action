@@ -9,7 +9,7 @@ public class Group {
 	private List<Person> persons;
 
 	public Group () {
-		this.persons = new ArrayList<Person>();
+    this.persons = new ArrayList<Person>();
 	}
 
 	public void addPersonToGroup (Person person) {
