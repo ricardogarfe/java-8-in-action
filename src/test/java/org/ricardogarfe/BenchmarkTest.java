@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -18,8 +17,10 @@ import junit.framework.TestSuite;
  */
 public class BenchmarkTest extends TestCase {
 
-  private Group personGroup;
   private List<Person> peopleList;
+  private double forElapsedSeconds;
+  private long forStart;
+  private long forEnd;
 
   /**
    * Create the test case
@@ -40,19 +41,25 @@ public class BenchmarkTest extends TestCase {
 
   @Before
   public void setUp() {
-    personGroup = new Group();
-  }
 
-  /**
-   * Rigourous Test :-)
-   */
-  public void testFoo() {
-    assertTrue(true);
+    peopleList = createPeopleList();
+
+    forStart = System.currentTimeMillis();
+
+    List<Person> adultPersonsList = new ArrayList<Person>();
+    for (Person person : peopleList) {
+      if (person.getAge() > 18) {
+        adultPersonsList.add(person);
+      }
+    }
+
+    forEnd = System.currentTimeMillis();
+    long forDelta = forEnd - forStart;
+    forElapsedSeconds = forDelta / 1000.0;
+
   }
 
   public void testForVsLambda() {
-
-    List<Person> peopleList = createPeopleList();
 
     long foreachStart = System.currentTimeMillis();
     for (Person person : peopleList) {
@@ -77,11 +84,10 @@ public class BenchmarkTest extends TestCase {
 
   public void testForVsStream() {
 
-    peopleList = createPeopleList();
-
     long streamStart = System.currentTimeMillis();
 
-    List<Person> adultPeopleListFromStream = peopleList.stream().filter(person -> person.getAge() > 18).collect(Collectors.toList());
+    List<Person> adultPeopleListFromStream = peopleList.stream().filter(person -> person.getAge() > 18)
+        .collect(Collectors.toList());
 
     long streamEnd = System.currentTimeMillis();
     long streamDelta = streamEnd - streamStart;
@@ -89,23 +95,45 @@ public class BenchmarkTest extends TestCase {
 
     System.out.println("Adult people stream method:\t" + adultPeopleListFromStream.size());
 
-    long forStart = System.currentTimeMillis();
+    Assert.assertTrue("For is faster than Stream !" + "\nFor elapsed time:\t" + forElapsedSeconds + "\n Start:\t"
+        + forStart + "\n End:\t" + forEnd + "\nStream elapsed time:\t" + streamElapsedSeconds + "\n Start:\t"
+        + streamStart + "\n End:\t" + streamEnd, forElapsedSeconds > streamElapsedSeconds);
+  }
 
-    List<Person> adultPersonsList = new ArrayList<Person>();
-    for (Person person : peopleList) {
-      if (person.getAge() > 18) {
-        adultPersonsList.add(person);
-      }
-    }
-    long forEnd = System.currentTimeMillis();
-    long forDelta = forEnd - forStart;
-    double forElapsedSeconds = forDelta / 1000.0;
+  public void testForVsParallelStream() {
 
-    System.out.println("Adult people for method:\t" + adultPersonsList.size());
+    long streamStart = System.currentTimeMillis();
+
+    List<Person> adultPeopleListFromStream = peopleList.stream().filter(person -> person.getAge() > 18)
+        .collect(Collectors.toList());
+
+    long streamEnd = System.currentTimeMillis();
+    long streamDelta = streamEnd - streamStart;
+    double streamElapsedSeconds = streamDelta / 1000.0;
+
+    System.out.println("Adult people stream method:\t" + adultPeopleListFromStream.size());
 
     Assert.assertTrue("For is faster than Stream !" + "\nFor elapsed time:\t" + forElapsedSeconds + "\n Start:\t"
         + forStart + "\n End:\t" + forEnd + "\nStream elapsed time:\t" + streamElapsedSeconds + "\n Start:\t"
         + streamStart + "\n End:\t" + streamEnd, forElapsedSeconds > streamElapsedSeconds);
+
+    long parallelStreamStart = System.currentTimeMillis();
+
+    List<Person> adultPeopleListFromParallelStream = peopleList.parallelStream().filter(person -> person.getAge() > 18)
+        .collect(Collectors.toList());
+
+    long parallelStreamEnd = System.currentTimeMillis();
+    long parallelStreamDelta = parallelStreamEnd - parallelStreamStart;
+    double parallelStreamElapsedSeconds = parallelStreamDelta / 1000.0;
+
+    System.out.println("Adult people stream method:\t" + adultPeopleListFromParallelStream.size());
+
+    Assert
+        .assertTrue(
+            "For is faster than Parallel Stream !" + "\nFor elapsed time:\t" + forElapsedSeconds + "\n Start:\t"
+                + forStart + "\n End:\t" + forEnd + "\nStream elapsed time:\t" + parallelStreamElapsedSeconds
+                + "\n Start:\t" + parallelStreamStart + "\n End:\t" + parallelStreamEnd,
+            forElapsedSeconds > parallelStreamElapsedSeconds);
 
   }
 
