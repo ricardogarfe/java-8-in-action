@@ -29,17 +29,6 @@ public class StreamChapterTest {
 
     }
 
-/*    @Test
-    public void testConsumeStream() {
-
-        List<String> title = Arrays.asList("Java8", "In", "Action");
-        Stream<String> s = title.stream();
-        s.forEach(System.out::println);
-        s.forEach(System.out::println);
-
-        assertTrue(true);
-    }*/
-
     @Test
     public void testFilterDishesMenuByCaloriesJDK7() throws Exception {
 
@@ -55,7 +44,6 @@ public class StreamChapterTest {
         assertTrue("There aren't Caloric Dishes on the menu.", !filterDishesResult.isEmpty());
 
     }
-
 
     @Test
     public void testFilterVeganDishes() throws Exception {
