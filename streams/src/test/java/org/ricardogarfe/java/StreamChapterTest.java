@@ -6,7 +6,6 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 public class StreamChapterTest {
@@ -27,6 +26,12 @@ public class StreamChapterTest {
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
 
+    }
+
+    @Test(expected= IllegalStateException.class)
+    public void testConsumeTwiceStreamThrowsException() {
+
+        streamChapter.consumeTwiceStreamThrowsException();
     }
 
     @Test
