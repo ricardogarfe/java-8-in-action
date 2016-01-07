@@ -10,6 +10,8 @@ import static org.junit.Assert.assertTrue;
 
 public class StreamMapsChapterTest {
 
+    private StreamMapsChapter streamMapsChapter = new StreamMapsChapter();
+
     private List<Dish> menu = Arrays.asList(
             new Dish("pork", false, 800, Dish.Type.MEAT),
             new Dish("beef", false, 700, Dish.Type.MEAT),
@@ -27,8 +29,11 @@ public class StreamMapsChapterTest {
     }
 
     @Test
-    public void test() throws Exception {
+    public void testDistinctChars() throws Exception {
 
+        List<String> words = Arrays.asList("Hello", "World");
+
+        streamMapsChapter.distinctChars(words);
         assertTrue("It's impossible.", true);
 
     }
