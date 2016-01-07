@@ -9,15 +9,15 @@ Chapters
 Benchmarks
 -----------
 
-benchmark-lambda
+* [benchmark-lambda](benchmark-lambda)
 
 Streams
 --------
 
-streams
+* [streams](streams)
 
 Maps
 -----
 
-maps
+* [maps](maps)
 
