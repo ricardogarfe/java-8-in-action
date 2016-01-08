@@ -45,9 +45,10 @@ public class TransactionStreams {
                 .collect(Collectors.joining());
     }
 
-    public Optional<Trader> checkTradersByCity(List<Trader> traders, String city) {
+    public Optional<Trader> checkTradersByCity(List<Transaction> transactions, String city) {
 
-        return traders.stream()
+        return transactions.stream()
+                .map(Transaction::getTrader)
                 .filter(t -> city == t.getCity())
                 .findAny();
     }

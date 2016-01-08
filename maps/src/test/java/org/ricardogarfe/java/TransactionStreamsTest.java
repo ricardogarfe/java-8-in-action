@@ -83,8 +83,8 @@ public class TransactionStreamsTest {
     @Test
     public void testCheckTradersByCity() throws Exception {
 
-        Optional<Trader> traderInCity = transactionStreams.checkTradersByCity(traders, CAMBRIDGE);
-        Assert.assertTrue("There are no traders in " + CAMBRIDGE, traderInCity.isPresent());
+        Optional<Trader> traderInCity = transactionStreams.checkTradersByCity(transactions, MILAN);
+        Assert.assertTrue("There are no traders in " + MILAN, traderInCity.isPresent());
     }
 
     //    6. Print all transactions’ values from the traders living in Cambridge.
