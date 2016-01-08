@@ -55,7 +55,7 @@ public class TransactionStreamsTest {
                 "Cambridge",
                 "Milan");
 
-        List<String> citiesFromTraders = transactionStreams.uniqueCitiesFromTraders(traders);
+        List<String> citiesFromTraders = transactionStreams.uniqueCitiesFromTraders(transactions);
         Assert.assertTrue("There are different cities from traders.", expectedCities.equals(citiesFromTraders));
 
         citiesFromTraders.forEach(System.out::println);

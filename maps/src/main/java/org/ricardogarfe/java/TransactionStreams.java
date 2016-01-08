@@ -18,10 +18,10 @@ public class TransactionStreams {
                 .collect(Collectors.toList());
     }
 
-    public List<String> uniqueCitiesFromTraders(List<Trader> traders) {
+    public List<String> uniqueCitiesFromTraders(List<Transaction> transactions) {
 
-        return traders.stream()
-                .map(Trader::getCity)
+        return transactions.stream()
+                .map(transaction ->transaction.getTrader().getCity())
                 .distinct()
                 .collect(Collectors.toList());
     }
