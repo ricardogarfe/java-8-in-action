@@ -13,6 +13,7 @@ public class TransactionStreamsTest {
 
     private static Integer FILTERED_YEAR = 2011;
     private static String CITY = "Milan";
+    private static String FIRST_TRADER_NAME = "Alan";
 
     Trader raoul = new Trader("Raoul", "Cambridge");
     Trader mario = new Trader("Mario", "Milan");
@@ -67,7 +68,15 @@ public class TransactionStreamsTest {
 
         tradersFromCitySortByName.forEach(System.out::println);
     }
-//    4. Return a string of all traders’ names sorted alphabetically.
+
+    //    4. Return a string of all traders’ names sorted alphabetically.
+    @Test
+    public void testTraderNamesSortedByName() throws Exception {
+
+        String traderNamesSortedByName = transactionStreams.traderNamesSortedByName(traders);
+        Assert.assertTrue("Incorrect first trader ordered.", traderNamesSortedByName.startsWith(FIRST_TRADER_NAME));
+    }
+
 //    5. Are any traders based in Milan?
 //    6. Print all transactions’ values from the traders living in Cambridge.
 //    7. What’s the highest value of all the transactions?

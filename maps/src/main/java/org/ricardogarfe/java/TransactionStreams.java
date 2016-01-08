@@ -31,4 +31,12 @@ public class TransactionStreams {
                 .sorted(comparing(Trader::getName))
                 .collect(Collectors.toList());
     }
+
+    public String traderNamesSortedByName(List<Trader> traders) {
+
+        return traders.stream()
+                .map(Trader::getName)
+                .sorted()
+                .collect(Collectors.joining());
+    }
 }
