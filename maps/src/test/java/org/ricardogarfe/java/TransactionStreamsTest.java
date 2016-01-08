@@ -47,8 +47,12 @@ public class TransactionStreamsTest {
     @Test
     public void testUniqueCitiesFromTraders() throws Exception {
 
+        List<String> expectedCities = Arrays.asList(
+                "Cambridge",
+                "Milan");
+
         List<String> citiesFromTraders = transactionStreams.uniqueCitiesFromTraders(traders);
-        Assert.assertTrue("There are different cities from traders.", citiesFromTraders.size() == 2);
+        Assert.assertTrue("There are different cities from traders.", expectedCities.equals(citiesFromTraders));
 
         citiesFromTraders.forEach(System.out::println);
     }
