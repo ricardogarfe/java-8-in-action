@@ -18,6 +18,12 @@ public class TransactionStreamsTest {
     Trader alan = new Trader("Alan", "Cambridge");
     Trader brian = new Trader("Brian", "Cambridge");
 
+    List<Trader> traders = Arrays.asList(
+            raoul,
+            mario,
+            alan,
+            brian);
+
     List<Transaction> transactions = Arrays.asList(
             new Transaction(brian, 2011, 300),
             new Transaction(raoul, 2012, 1000),
@@ -37,7 +43,15 @@ public class TransactionStreamsTest {
         transactionSortedByYear.forEach(System.out::println);
     }
 
-//    2. What are all the unique cities where the traders work?
+    //    2. What are all the unique cities where the traders work?
+    @Test
+    public void testUniqueCitiesFromTraders() throws Exception {
+
+        List<String> citiesFromTraders = transactionStreams.uniqueCitiesFromTraders(traders);
+        Assert.assertTrue("There are different cities from traders.", citiesFromTraders.size() == 2);
+
+        citiesFromTraders.forEach(System.out::println);
+    }
 //    3. Find all traders from Cambridge and sort them by name.
 //    4. Return a string of all traders’ names sorted alphabetically.
 //    5. Are any traders based in Milan?

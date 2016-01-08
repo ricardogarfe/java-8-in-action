@@ -1,6 +1,5 @@
 package org.ricardogarfe.java;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,4 +16,11 @@ public class TransactionStreams {
                 .collect(Collectors.toList());
     }
 
+    public List<String> uniqueCitiesFromTraders(List<Trader> traders) {
+
+        return traders.stream()
+                .map(Trader::getCity)
+                .distinct()
+                .collect(Collectors.toList());
+    }
 }
