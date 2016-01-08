@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 public class TransactionStreamsTest {
 
@@ -13,6 +14,7 @@ public class TransactionStreamsTest {
 
     private static Integer FILTERED_YEAR = 2011;
     private static String CITY = "Milan";
+    private static final String CITY_TRADERS = "Cambridge";
     private static String FIRST_TRADER_NAME = "Alan";
 
     Trader raoul = new Trader("Raoul", "Cambridge");
@@ -77,7 +79,14 @@ public class TransactionStreamsTest {
         Assert.assertTrue("Incorrect first trader ordered.", traderNamesSortedByName.startsWith(FIRST_TRADER_NAME));
     }
 
-//    5. Are any traders based in Milan?
+    //    5. Are any traders based in Milan?
+    @Test
+    public void testCheckTradersByCity() throws Exception {
+
+        Optional<Trader> traderInCity = transactionStreams.checkTradersByCity(traders, CITY_TRADERS);
+        Assert.assertTrue("There are no traders in " + CITY_TRADERS, traderInCity.isPresent());
+    }
+
 //    6. Print all transactions’ values from the traders living in Cambridge.
 //    7. What’s the highest value of all the transactions?
 //    8. Find the transaction with the smallest value.

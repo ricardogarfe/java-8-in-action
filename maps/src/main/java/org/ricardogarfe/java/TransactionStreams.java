@@ -1,6 +1,7 @@
 package org.ricardogarfe.java;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static java.util.Comparator.comparing;
@@ -38,5 +39,12 @@ public class TransactionStreams {
                 .map(Trader::getName)
                 .sorted()
                 .collect(Collectors.joining());
+    }
+
+    public Optional<Trader> checkTradersByCity(List<Trader> traders, String city) {
+
+        return traders.stream()
+                .filter(t -> city == t.getCity())
+                .findAny();
     }
 }
