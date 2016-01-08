@@ -65,8 +65,8 @@ public class TransactionStreamsTest {
     @Test
     public void testFindTradersFromCitySortByName() throws Exception {
 
-        List<Trader> tradersFromCitySortByName = transactionStreams.findTradersFromCitySortByName(traders, MILAN);
-        Assert.assertTrue("There aren't Traders in " + MILAN, !tradersFromCitySortByName.isEmpty());
+        List<Trader> tradersFromCitySortByName = transactionStreams.findTradersFromCitySortByName(transactions, CAMBRIDGE);
+        Assert.assertTrue("There aren't Traders in " + CAMBRIDGE, !tradersFromCitySortByName.isEmpty());
 
         tradersFromCitySortByName.forEach(System.out::println);
     }
