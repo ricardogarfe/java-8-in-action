@@ -36,10 +36,11 @@ public class TransactionStreams {
                 .collect(Collectors.toList());
     }
 
-    public String traderNamesSortedByName(List<Trader> traders) {
+    public String traderNamesSortedByName(List<Transaction> transactions) {
 
-        return traders.stream()
-                .map(Trader::getName)
+        return transactions.stream()
+                .map(transaction -> transaction.getTrader().getName())
+                .distinct()
                 .sorted()
                 .collect(Collectors.joining());
     }

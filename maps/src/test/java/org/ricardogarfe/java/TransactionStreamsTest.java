@@ -75,7 +75,7 @@ public class TransactionStreamsTest {
     @Test
     public void testTraderNamesSortedByName() throws Exception {
 
-        String traderNamesSortedByName = transactionStreams.traderNamesSortedByName(traders);
+        String traderNamesSortedByName = transactionStreams.traderNamesSortedByName(transactions);
         Assert.assertTrue("Incorrect first trader ordered.", traderNamesSortedByName.startsWith(FIRST_TRADER_NAME));
     }
 
