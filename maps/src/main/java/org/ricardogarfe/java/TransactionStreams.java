@@ -23,4 +23,12 @@ public class TransactionStreams {
                 .distinct()
                 .collect(Collectors.toList());
     }
+
+    public List<Trader> findTradersFromCitySortByName(List<Trader> traders, String city) {
+
+        return traders.stream()
+                .filter(t -> city == t.getCity())
+                .sorted(comparing(Trader::getName))
+                .collect(Collectors.toList());
+    }
 }

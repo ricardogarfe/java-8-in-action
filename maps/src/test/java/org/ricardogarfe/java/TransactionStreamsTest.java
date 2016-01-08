@@ -12,6 +12,7 @@ public class TransactionStreamsTest {
     private TransactionStreams transactionStreams = new TransactionStreams();
 
     private static Integer FILTERED_YEAR = 2011;
+    private static String CITY = "Milan";
 
     Trader raoul = new Trader("Raoul", "Cambridge");
     Trader mario = new Trader("Mario", "Milan");
@@ -56,7 +57,16 @@ public class TransactionStreamsTest {
 
         citiesFromTraders.forEach(System.out::println);
     }
-//    3. Find all traders from Cambridge and sort them by name.
+
+    //    3. Find all traders from Cambridge and sort them by name.
+    @Test
+    public void testFindTradersFromCitySortByName() throws Exception {
+
+        List<Trader> tradersFromCitySortByName = transactionStreams.findTradersFromCitySortByName(traders, CITY);
+        Assert.assertTrue("There aren't Traders in " + CITY, !tradersFromCitySortByName.isEmpty());
+
+        tradersFromCitySortByName.forEach(System.out::println);
+    }
 //    4. Return a string of all traders’ names sorted alphabetically.
 //    5. Are any traders based in Milan?
 //    6. Print all transactions’ values from the traders living in Cambridge.
