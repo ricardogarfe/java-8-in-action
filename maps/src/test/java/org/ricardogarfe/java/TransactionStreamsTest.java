@@ -13,8 +13,8 @@ public class TransactionStreamsTest {
     private TransactionStreams transactionStreams = new TransactionStreams();
 
     private static Integer FILTERED_YEAR = 2011;
-    private static String CITY = "Milan";
-    private static final String CITY_TRADERS = "Cambridge";
+    private static String MILAN = "Milan";
+    private static final String CAMBRIDGE = "Cambridge";
     private static String FIRST_TRADER_NAME = "Alan";
 
     Trader raoul = new Trader("Raoul", "Cambridge");
@@ -65,8 +65,8 @@ public class TransactionStreamsTest {
     @Test
     public void testFindTradersFromCitySortByName() throws Exception {
 
-        List<Trader> tradersFromCitySortByName = transactionStreams.findTradersFromCitySortByName(traders, CITY);
-        Assert.assertTrue("There aren't Traders in " + CITY, !tradersFromCitySortByName.isEmpty());
+        List<Trader> tradersFromCitySortByName = transactionStreams.findTradersFromCitySortByName(traders, MILAN);
+        Assert.assertTrue("There aren't Traders in " + MILAN, !tradersFromCitySortByName.isEmpty());
 
         tradersFromCitySortByName.forEach(System.out::println);
     }
@@ -83,11 +83,20 @@ public class TransactionStreamsTest {
     @Test
     public void testCheckTradersByCity() throws Exception {
 
-        Optional<Trader> traderInCity = transactionStreams.checkTradersByCity(traders, CITY_TRADERS);
-        Assert.assertTrue("There are no traders in " + CITY_TRADERS, traderInCity.isPresent());
+        Optional<Trader> traderInCity = transactionStreams.checkTradersByCity(traders, CAMBRIDGE);
+        Assert.assertTrue("There are no traders in " + CAMBRIDGE, traderInCity.isPresent());
     }
 
-//    6. Print all transactions’ values from the traders living in Cambridge.
+    //    6. Print all transactions’ values from the traders living in Cambridge.
+    @Test
+    public void testTransactionValuesFromTradersFromCambridge() throws Exception {
+
+        List<Integer> transactionValuesFromCambridge = transactionStreams.transactionValuesFromCambridge(transactions);
+        Assert.assertTrue("There are no correct transaction values from Cambridge.", transactionValuesFromCambridge.size() == 4);
+
+        transactionValuesFromCambridge.forEach(System.out::println);
+    }
+
 //    7. What’s the highest value of all the transactions?
 //    8. Find the transaction with the smallest value.
 
