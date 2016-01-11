@@ -1,6 +1,5 @@
 package org.ricardogarfe.java;
 
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -22,7 +21,6 @@ public class NumericStreamChapterTest {
             new Dish("pizza", true, 550, Dish.Type.OTHER),
             new Dish("prawns", false, 300, Dish.Type.FISH),
             new Dish("salmon", false, 450, Dish.Type.FISH));
-
 
     @Test
     public void test() throws Exception {
