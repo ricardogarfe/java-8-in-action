@@ -120,5 +120,4 @@ public class TransactionStreamsTest {
                         + smallestValueExpected + " != " + smallestValue,
                 smallestValueExpected, smallestValue.get());
     }
-
 }
