@@ -60,4 +60,11 @@ public class TransactionStreams {
                 .map(Transaction::getValue)
                 .collect(Collectors.toList());
     }
+
+    public Optional<Integer> highestTransactionValue(List<Transaction> transactions) {
+
+        return transactions.stream()
+                .map(Transaction::getValue)
+                .reduce(Integer::max);
+    }
 }

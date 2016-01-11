@@ -97,7 +97,18 @@ public class TransactionStreamsTest {
         transactionValuesFromCambridge.forEach(System.out::println);
     }
 
-//    7. What’s the highest value of all the transactions?
+    //    7. What’s the highest value of all the transactions?
+    @Test
+    public void testHighestTransactionValue() throws Exception {
+
+        Integer highestValueExpected = 1000;
+        Optional<Integer> highestValue = transactionStreams.highestTransactionValue(transactions);
+
+        Assert.assertEquals("Highest value is not correct: "
+                + highestValueExpected + " != " + highestValue,
+                highestValueExpected, highestValue.get());
+    }
+
 //    8. Find the transaction with the smallest value.
 
 }
