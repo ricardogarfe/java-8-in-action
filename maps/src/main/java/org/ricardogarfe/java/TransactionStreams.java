@@ -67,4 +67,11 @@ public class TransactionStreams {
                 .map(Transaction::getValue)
                 .reduce(Integer::max);
     }
+
+    public Optional<Integer> smallestTransactionValue(List<Transaction> transactions) {
+
+        return transactions.stream()
+                .map(Transaction::getValue)
+                .reduce(Integer::min);
+    }
 }

@@ -105,10 +105,20 @@ public class TransactionStreamsTest {
         Optional<Integer> highestValue = transactionStreams.highestTransactionValue(transactions);
 
         Assert.assertEquals("Highest value is not correct: "
-                + highestValueExpected + " != " + highestValue,
+                        + highestValueExpected + " != " + highestValue,
                 highestValueExpected, highestValue.get());
     }
 
-//    8. Find the transaction with the smallest value.
+    //    8. Find the transaction with the smallest value.
+    @Test
+    public void testSmallestTransactionValue() throws Exception {
+
+        Integer smallestValueExpected = 300;
+        Optional<Integer> smallestValue = transactionStreams.smallestTransactionValue(transactions);
+
+        Assert.assertEquals("Smallest value is not correct: "
+                        + smallestValueExpected + " != " + smallestValue,
+                smallestValueExpected, smallestValue.get());
+    }
 
 }
