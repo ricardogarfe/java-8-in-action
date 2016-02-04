@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 
 public class StringStreamsChapter {
 
-  public void infiniteStream() {
+  public void createStringStream() {
     Stream<String> stream = Stream.of("Java 8 ", "Lambdas ", "In ", "Action");
     stream.map(String::toUpperCase).forEach(System.out::println);
   }
@@ -28,5 +28,13 @@ public class StringStreamsChapter {
       throw new Exception("Error reading file from path.");
     }
     return uniqueWords;
+  }
+
+  public void fibonacciTuple() {
+    Stream.iterate(new int[]{0,1},
+        t -> new int[]{t[1], t[0] + t[1]})
+        .limit(20)
+        .map(t -> t[0])
+        .forEach(System.out::println);
   }
 }
