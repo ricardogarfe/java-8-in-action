@@ -43,4 +43,11 @@ public class StringStreamsChapterTest {
     stringStreamsChapter.fibonacciTuples();
     Assert.assertTrue(true);
   }
+
+  @Test
+  public void testGenerateInfiniteStream() throws Exception {
+    Stream.generate(Math::random)
+        .limit(5)
+        .forEach(System.out::println);
+  }
 }
