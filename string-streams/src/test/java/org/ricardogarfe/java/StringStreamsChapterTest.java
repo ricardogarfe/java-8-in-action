@@ -18,4 +18,12 @@ public class StringStreamsChapterTest {
     Assert.assertTrue(true);
   }
 
+  @Test
+  public void testStreamFromFile() throws Exception {
+
+    String filePath = "src/test/resources/file.txt";
+    long expectedWords = stringStreamsChapter.streamFromFile(filePath);
+
+    Assert.assertTrue("There are no different words in file!", expectedWords != 0);
+  }
 }

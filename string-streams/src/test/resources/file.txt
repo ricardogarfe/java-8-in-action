@@ -1,0 +1,4 @@
+has been updated to take advantage of the Streams API. Many static methods in
+java.nio.file.Files return a stream. For example, a useful method is Files.lines, which returns a
+stream of lines as strings from a given file. Using what you’ve learned so far, you could use this
+method to find out the number of unique words in a file as follows:
