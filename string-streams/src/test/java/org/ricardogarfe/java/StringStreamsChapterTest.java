@@ -50,4 +50,12 @@ public class StringStreamsChapterTest {
         .limit(5)
         .forEach(System.out::println);
   }
+
+  @Test
+  public void testFibonacciTuplesIntSupplier() throws Exception {
+
+    stringStreamsChapter.fibonacciTuplesIntSupplier();
+    Assert.assertTrue(true);
+  }
+
 }

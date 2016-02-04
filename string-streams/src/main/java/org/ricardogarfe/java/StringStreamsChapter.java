@@ -5,6 +5,8 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.function.IntSupplier;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class StringStreamsChapter {
@@ -37,4 +39,22 @@ public class StringStreamsChapter {
         .map(t -> t[0])
         .forEach(System.out::println);
   }
+
+  public void fibonacciTuplesIntSupplier() {
+
+    IntSupplier fib = new IntSupplier(){
+      private int previous = 0;
+      private int current = 1;
+      public int getAsInt(){
+        int oldPrevious = this.previous;
+        int nextValue = this.previous + this.current;
+        this.previous = this.current;
+        this.current = nextValue;
+        return oldPrevious;
+      }
+    };
+
+    IntStream.generate(fib).limit(10).forEach(System.out::println);
+  }
+
 }
