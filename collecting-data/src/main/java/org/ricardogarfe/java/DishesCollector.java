@@ -2,7 +2,6 @@ package org.ricardogarfe.java;
 
 import java.util.*;
 import java.util.stream.Stream;
-import java.util.IntSummaryStatistics;
 
 import static java.util.stream.Collectors.*;
 
@@ -52,8 +51,24 @@ public class DishesCollector {
     return mostCalorieDish;
   }
 
+  public Optional<Dish> reduceMaxCaloriesDish(List<Dish> menu) {
+
+    Optional<Dish> mostCalorieDish =
+        menu.stream().collect(reducing(
+            (d1, d2) -> d1.getCalories() > d2.getCalories() ? d1 : d2));
+
+    return mostCalorieDish;
+  }
+
   public Integer totalCalories(List<Dish> menu) {
     int totalCalories = menu.stream().collect(summingInt(Dish::getCalories));
+    return totalCalories;
+  }
+
+  public Integer reduceTotalCalories(List<Dish> menu) {
+
+    int totalCalories = menu.stream().collect(reducing(
+        0, Dish::getCalories, (i, j) -> i + j));
     return totalCalories;
   }
 
@@ -74,4 +89,5 @@ public class DishesCollector {
     String menuNames = menu.stream().map(Dish::getName).collect(joining(", "));
     return menuNames;
   }
+
 }
