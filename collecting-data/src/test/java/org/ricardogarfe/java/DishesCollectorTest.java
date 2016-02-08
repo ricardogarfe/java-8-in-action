@@ -38,7 +38,6 @@ public class DishesCollectorTest {
   public void testMaxCaloriesDish() throws Exception {
 
     Optional<Dish> maxCaloriesDish = dishesCollector.maxCaloriesDish(menu);
-
     Assert.assertTrue("There is no Dish on menu.", maxCaloriesDish.isPresent());
   }
 
@@ -46,7 +45,13 @@ public class DishesCollectorTest {
   public void testTotalCalories() throws Exception {
 
     Integer totalMenuCalories = dishesCollector.totalCalories(menu);
-
     Assert.assertTrue("It's a menu without calories !", totalMenuCalories > 0);
+  }
+
+  @Test
+  public void testAverageCalories() throws Exception {
+
+    Double avgMenuCalories = dishesCollector.averageCalories(menu);
+    Assert.assertTrue("It's a menu without calories !", avgMenuCalories > 0);
   }
 }

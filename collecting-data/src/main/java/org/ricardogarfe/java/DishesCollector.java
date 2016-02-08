@@ -58,4 +58,9 @@ public class DishesCollector {
     int totalCalories = menu.stream().collect(summingInt(Dish::getCalories));
     return totalCalories;
   }
+
+  public Double averageCalories (List<Dish> menu) {
+    double avgCalories = menu.stream().collect(averagingInt(Dish::getCalories));
+    return avgCalories;
+  }
 }
