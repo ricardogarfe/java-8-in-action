@@ -66,7 +66,12 @@ public class DishesCollector {
 
     IntSummaryStatistics menuStatistics =
         menu.stream().collect(summarizingInt(Dish::getCalories));
-
     return menuStatistics;
+  }
+
+  public String retrieveMenuNames(List<Dish> menu) {
+
+    String menuNames = menu.stream().map(Dish::getName).collect(joining(", "));
+    return menuNames;
   }
 }

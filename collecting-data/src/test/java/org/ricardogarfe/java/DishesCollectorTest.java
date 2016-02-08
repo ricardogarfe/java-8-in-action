@@ -64,4 +64,11 @@ public class DishesCollectorTest {
 
     System.out.println("Menu stats:\t" + menuStatistics.toString());
   }
+
+  @Test
+  public void testRetrieveMenuNames() throws Exception {
+
+    String menuNamesJoined = dishesCollector.retrieveMenuNames(menu);
+    Assert.assertTrue("Empty menu names! ", !menuNamesJoined.isEmpty());
+  }
 }
