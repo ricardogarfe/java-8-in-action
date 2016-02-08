@@ -1,7 +1,13 @@
 package org.ricardogarfe.java;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.*;
 
 public class DishesCollectorTest {
 
@@ -18,4 +24,13 @@ public class DishesCollectorTest {
       new Dish("prawns", false, 300, Dish.Type.FISH),
       new Dish("salmon", false, 450, Dish.Type.FISH));
 
+
+  @Test
+  public void testCountDishes() throws Exception {
+
+    long howManyDishesCollectors = menu.stream().collect(counting());
+    long howManyDishes = menu.stream().count();
+
+    Assert.assertEquals("Dishes result size different.", howManyDishesCollectors, howManyDishes);
+  }
 }
