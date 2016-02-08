@@ -1,10 +1,8 @@
 package org.ricardogarfe.java;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Stream;
+import java.util.IntSummaryStatistics;
 
 import static java.util.stream.Collectors.*;
 
@@ -54,13 +52,21 @@ public class DishesCollector {
     return mostCalorieDish;
   }
 
-  public Integer totalCalories (List<Dish> menu) {
+  public Integer totalCalories(List<Dish> menu) {
     int totalCalories = menu.stream().collect(summingInt(Dish::getCalories));
     return totalCalories;
   }
 
-  public Double averageCalories (List<Dish> menu) {
+  public Double averageCalories(List<Dish> menu) {
     double avgCalories = menu.stream().collect(averagingInt(Dish::getCalories));
     return avgCalories;
+  }
+
+  public IntSummaryStatistics summarizeMenu(List<Dish> menu) {
+
+    IntSummaryStatistics menuStatistics =
+        menu.stream().collect(summarizingInt(Dish::getCalories));
+
+    return menuStatistics;
   }
 }

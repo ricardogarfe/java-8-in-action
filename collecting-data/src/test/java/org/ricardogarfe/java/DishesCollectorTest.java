@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.Optional;
 
@@ -53,5 +54,14 @@ public class DishesCollectorTest {
 
     Double avgMenuCalories = dishesCollector.averageCalories(menu);
     Assert.assertTrue("It's a menu without calories !", avgMenuCalories > 0);
+  }
+
+  @Test
+  public void testSummarizeMenu() throws Exception {
+
+    IntSummaryStatistics menuStatistics = dishesCollector.summarizeMenu(menu);
+    Assert.assertTrue("There aren't statistics on menu !", menuStatistics.getAverage() != 0);
+
+    System.out.println("Menu stats:\t" + menuStatistics.toString());
   }
 }
