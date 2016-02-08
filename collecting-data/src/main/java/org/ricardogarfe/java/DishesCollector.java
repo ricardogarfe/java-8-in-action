@@ -1,10 +1,12 @@
 package org.ricardogarfe.java;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Stream;
 
-import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.*;
 
 public class DishesCollector {
 
@@ -39,5 +41,21 @@ public class DishesCollector {
     Stream<String> s = title.stream();
     s.forEach(System.out::println);
     s.forEach(System.out::println);
+  }
+
+  public Optional<Dish> maxCaloriesDish(List<Dish> menu) {
+
+    Comparator<Dish> dishCaloriesComparator =
+        Comparator.comparingInt(Dish::getCalories);
+    Optional<Dish> mostCalorieDish =
+        menu.stream()
+            .collect(maxBy(dishCaloriesComparator));
+
+    return mostCalorieDish;
+  }
+
+  public Integer totalCalories (List<Dish> menu) {
+    int totalCalories = menu.stream().collect(summingInt(Dish::getCalories));
+    return totalCalories;
   }
 }

@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 import static java.util.stream.Collectors.*;
 
@@ -32,5 +32,21 @@ public class DishesCollectorTest {
     long howManyDishes = menu.stream().count();
 
     Assert.assertEquals("Dishes result size different.", howManyDishesCollectors, howManyDishes);
+  }
+
+  @Test
+  public void testMaxCaloriesDish() throws Exception {
+
+    Optional<Dish> maxCaloriesDish = dishesCollector.maxCaloriesDish(menu);
+
+    Assert.assertTrue("There is no Dish on menu.", maxCaloriesDish.isPresent());
+  }
+
+  @Test
+  public void testTotalCalories() throws Exception {
+
+    Integer totalMenuCalories = dishesCollector.totalCalories(menu);
+
+    Assert.assertTrue("It's a menu without calories !", totalMenuCalories > 0);
   }
 }
