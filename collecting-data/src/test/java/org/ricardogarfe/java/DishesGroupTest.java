@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public class DishesGroupTest {
 
@@ -26,6 +27,17 @@ public class DishesGroupTest {
     dishesByCaloricLevel.forEach((level, list) -> {
       System.out.println(level);
       list.stream().map(Dish::getName).forEach(System.out::println);
+    });
+  }
+
+  @Test
+  public void testGroupByMostCaloricByType() throws Exception {
+
+    Map<Dish.Type, Optional<Dish>> mostCaloricByType = dishesGroup.groupByMostCaloricByType(dishesUtil.getMenu());
+    Assert.assertTrue("Most caloric types don't exist", !mostCaloricByType.isEmpty());
+    mostCaloricByType.forEach((type, optional) -> {
+      System.out.println("Type:\t" + type);
+      System.out.println("Name:\t" + optional.get().getName());
     });
   }
 }

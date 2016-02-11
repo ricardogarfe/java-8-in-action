@@ -2,8 +2,11 @@ package org.ricardogarfe.java;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
+import static java.util.Comparator.comparingInt;
 import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.maxBy;
 
 public class DishesGroup {
 
@@ -44,5 +47,15 @@ public class DishesGroup {
         ));
 
     return dishesByTypeAndCaloricLevel;
+  }
+
+  public Map<Dish.Type, Optional<Dish>> groupByMostCaloricByType(List<Dish> menu) {
+
+    Map<Dish.Type, Optional<Dish>> mostCaloricByType =
+        menu.stream()
+            .collect(groupingBy(Dish::getType,
+                maxBy(comparingInt(Dish::getCalories))));
+
+    return mostCaloricByType;
   }
 }
