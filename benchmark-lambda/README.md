@@ -22,6 +22,25 @@ Lambda Method
      End:   1445943238491
 ```
 
+# For benchmark
+
+Benchmark extracting even numbers from 10000000 registers.
+
+Results:
+```shell
+Simple Statics:	 10000000 even elements computed 10 times 
+* Average time:	 1749 msecs 
+* Max time:	6781 
+* Min time:	817
+
+Parallel Statics:	 10000000 even elements computed 10 times 
+* Average time:	  791 msecs 
+* Max time:	3517 
+* Min time:	446
+```
+
+Tests in [NumberBenchmarkStreamsTest](src/test/org/ricardogarfe/NumberBenchmarkStreamsTest) class.
+
 ## Documentation
 
 Code samples from:
