@@ -6,8 +6,11 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.LongSummaryStatistics;
 
 public class NumberBenchmarkStreamsTest {
+
+  private final static String LOG_TEMPLATE = "%d elements computed with %nAverage time:\t%5.0f msecs %nMax:\t%d %nMin:\t%d";
 
   private NumberBenchmarkStreams numberBenchmarkStreams = new NumberBenchmarkStreams();
 
@@ -21,7 +24,16 @@ public class NumberBenchmarkStreamsTest {
   @Test
   public void testSimpleEvenNumberStream() throws Exception {
 
-    numberBenchmarkStreams.evenNumbers(numbers);
+    List<NumberBenchmark> numberBenchmarks = numberBenchmarkStreams.evenNumbers(numbers);
+    LongSummaryStatistics longSummaryStatistics = numberBenchmarks.stream().mapToLong(NumberBenchmark::getElapsedTime).summaryStatistics();
+
+    System.out.printf(LOG_TEMPLATE,
+        longSummaryStatistics.getCount(),
+        longSummaryStatistics.getAverage(),
+        longSummaryStatistics.getMax(),
+        longSummaryStatistics.getMin()
+    );
+
     Assert.assertTrue(true);
   }
 
