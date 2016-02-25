@@ -65,4 +65,12 @@ public class StreamChapter {
         s.forEach(System.out::println);
         s.forEach(System.out::println);
     }
+
+    public List<String> filterUniqueCharsFromList(List<String> words) {
+
+        return words.stream()
+                .map(word -> word.split(""))
+                .distinct()
+                .collect(toList());
+    }
 }

@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class StreamChapterTest {
@@ -60,5 +61,12 @@ public class StreamChapterTest {
         veganDishes.forEach(dish -> System.out.println(dish.getName()));
     }
 
+    @Test
+    public void testFilterUniqueCharsFromList() throws Exception {
 
+        String[] stringList = {"Hello", "World"};
+        List<String> uniqueChars = streamChapter.filterUniqueCharsFromList(Arrays.asList(stringList));
+        assertTrue("There aren't Caloric Dishes on the menu.", uniqueChars.size() == 9);
+
+    }
 }
