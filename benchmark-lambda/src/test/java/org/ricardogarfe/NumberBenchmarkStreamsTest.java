@@ -58,6 +58,36 @@ public class NumberBenchmarkStreamsTest {
     Assert.assertTrue(true);
   }
 
+  @Test
+  public void testIterationAndStreamTimes() {
+    List<NumberBenchmark> streamParallelBenchmarks = numberBenchmarkStreams.evenParallelNumbers(numbers);
+    List<NumberBenchmark> iterationBenchmarks = numberBenchmarkStreams.iterateEvenNumbers(numbers);
+
+    LongSummaryStatistics streamSummaryStatistics = streamParallelBenchmarks.stream().mapToLong(NumberBenchmark::getElapsedTime).summaryStatistics();
+    LongSummaryStatistics iterationSummaryStatistics = iterationBenchmarks.stream().mapToLong(NumberBenchmark::getElapsedTime).summaryStatistics();
+
+    System.out.printf(LOG_TEMPLATE,
+        "\nSimple Iteration",
+        TEST_SIZE,
+        iterationSummaryStatistics.getCount(),
+        iterationSummaryStatistics.getAverage(),
+        iterationSummaryStatistics.getMax(),
+        iterationSummaryStatistics.getMin()
+    );
+
+    System.out.printf(LOG_TEMPLATE,
+        "\nStream Parallel times",
+        TEST_SIZE,
+        streamSummaryStatistics.getCount(),
+        streamSummaryStatistics.getAverage(),
+        streamSummaryStatistics.getMax(),
+        streamSummaryStatistics.getMin()
+    );
+
+    Assert.assertTrue("Streams are slower than a basic for.",
+        iterationSummaryStatistics.getAverage() > streamSummaryStatistics.getAverage());
+  }
+
   private void initializeStream() {
     numbers = new ArrayList<>();
     for (int i = 0; i < TEST_SIZE; i++) {
