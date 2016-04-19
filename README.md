@@ -1,3 +1,5 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/grade/b3ffd6f373a24cb188e135129359431d)](https://www.codacy.com/app/ricardogarfe/java-8-in-action)
+
 Java 8 in Action
 ==================
 
