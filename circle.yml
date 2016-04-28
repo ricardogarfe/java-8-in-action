@@ -6,7 +6,7 @@ dependencies:
     - mvn --fail-never dependency:go-offline || true
 test:
   override:
-    - mvn clean verify org.jacoco:jacoco-maven-plugin: -Dmaven.test.failure.ignore=true
+    - mvn clean verify org.jacoco:jacoco-maven-plugin:report -Dmaven.test.failure.ignore=true
     # copy the test results to the test results directory.
     - cp -r **/target/surefire-reports/* $CIRCLE_TEST_REPORTS
   post:
