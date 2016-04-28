@@ -13,4 +13,9 @@ test:
     - curl http://www.jpm4j.org/install/script > jpmInstall.sh
     - sudo sh jpmInstall.sh
     - sudo jpm install com.codacy:codacy-coverage-reporter:assembly
-    - codacy-coverage-reporter -l Java -r **/target/site/jacoco/jacoco.xml --projectToken $projectToken
+    - codacy-coverage-reporter -l Java -r collecting-data/target/site/jacoco/jacoco.xml --projectToken $projectToken
+    - codacy-coverage-reporter -l Java -r maps/target/site/jacoco/jacoco.xml --projectToken $projectToken
+    - codacy-coverage-reporter -l Java -r numericstreams/target/site/jacoco/jacoco.xml --projectToken $projectToken
+    - codacy-coverage-reporter -l Java -r pythagorean-triples/target/site/jacoco/jacoco.xml --projectToken $projectToken
+    - codacy-coverage-reporter -l Java -r streams/target/site/jacoco/jacoco.xml --projectToken $projectToken
+    - codacy-coverage-reporter -l Java -r string-streams/target/site/jacoco/jacoco.xml --projectToken $projectToken
