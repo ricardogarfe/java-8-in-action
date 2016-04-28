@@ -3,7 +3,7 @@ machine:
     version: oraclejdk8
 test:
   post:
-    - mvn jacoco:report
+    - mvn clean verify -Dmaven.test.failure.ignore=true
     - curl http://www.jpm4j.org/install/script > jpmInstall.sh
     - sudo sh jpmInstall.sh
     - sudo jpm install com.codacy:codacy-coverage-reporter:assembly
