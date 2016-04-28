@@ -6,6 +6,7 @@
     <groupId>org.ricardogarfe</groupId>
     <artifactId>java-8</artifactId>
     <version>1</version>
+    <relativePath>../java-8/pom.xml</relativePath>
   </parent>
 
   <groupId>org.ricardogarfe</groupId>
