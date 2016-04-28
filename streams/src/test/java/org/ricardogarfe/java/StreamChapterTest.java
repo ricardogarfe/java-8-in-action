@@ -66,7 +66,7 @@ public class StreamChapterTest {
 
         String[] stringList = {"Hello", "World"};
         List<String> uniqueChars = streamChapter.filterUniqueCharsFromList(Arrays.asList(stringList));
-        assertTrue("There aren't Caloric Dishes on the menu.", uniqueChars.size() == 9);
+        assertTrue("Number of unique characters is not correct.", uniqueChars.size() == 7);
 
     }
 }

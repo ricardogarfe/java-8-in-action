@@ -70,6 +70,7 @@ public class StreamChapter {
 
         return words.stream()
                 .map(word -> word.split(""))
+                .flatMap(Arrays::stream)
                 .distinct()
                 .collect(toList());
     }
