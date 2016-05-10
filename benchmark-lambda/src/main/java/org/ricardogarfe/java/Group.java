@@ -1,8 +1,7 @@
-package org.ricardogarfe;
+package org.ricardogarfe.java;
 
 import java.util.List;
 import java.util.ArrayList;
-import org.ricardogarfe.Person;
 
 public class Group {
 	

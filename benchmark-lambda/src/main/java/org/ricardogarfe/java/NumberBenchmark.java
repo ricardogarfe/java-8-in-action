@@ -1,4 +1,4 @@
-package org.ricardogarfe;
+package org.ricardogarfe.java;
 
 public class NumberBenchmark {
 
