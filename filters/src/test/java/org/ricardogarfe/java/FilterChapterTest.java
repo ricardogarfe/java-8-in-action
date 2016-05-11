@@ -2,8 +2,11 @@ package org.ricardogarfe.java;
 
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class FilterChapterTest {
@@ -27,7 +30,16 @@ public class FilterChapterTest {
   public void testFindAnyVegetarianDish() throws Exception {
     Optional<Dish> anyVegetarian = filterChapter.findAnyVegetarianDish(dishesUtil.getMenu());
     assertTrue("There is not any vegetarian dish on menu", anyVegetarian.isPresent());
-    anyVegetarian.ifPresent(dish -> System.out.println(dish.getName()));
   }
 
+  @Test
+  public void testFindFirsThreeMultiple() throws Exception {
+    Integer expectedFirstSquare = new Integer(9);
+    List<Integer> someNumbers = Arrays.asList(1, 2, 3, 4, 5, 6);
+
+    Optional<Integer> firstSquareDivisibleByThree = filterChapter.firstSquareDivisibleByThree(someNumbers);
+
+    assertTrue("There is no square number divisible by three", firstSquareDivisibleByThree.isPresent());
+    assertEquals("Is not correctly the first square number divisible by three", expectedFirstSquare, firstSquareDivisibleByThree.get());
+  }
 }

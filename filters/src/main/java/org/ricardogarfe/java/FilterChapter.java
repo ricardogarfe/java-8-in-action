@@ -19,4 +19,11 @@ public class FilterChapter {
         .filter(Dish::isVegetarian)
         .findAny();
   }
+
+  public Optional<Integer> firstSquareDivisibleByThree(List<Integer> someNumbers) {
+    return someNumbers.stream()
+        .map(x -> x * x)
+        .filter(x -> x % 3 == 0)
+        .findFirst();
+  }
 }
