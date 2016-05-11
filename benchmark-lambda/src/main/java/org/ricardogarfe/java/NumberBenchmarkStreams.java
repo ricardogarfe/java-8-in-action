@@ -15,10 +15,11 @@ public class NumberBenchmarkStreams {
   public List<NumberBenchmark> evenNumbers(final List<Integer> numbers) {
 
     List<NumberBenchmark> numberBenchmarks = new ArrayList<>();
+    List<Integer> even;
 
     for (int i = 0; i < MAX_NUMBER_TESTS; i++) {
       long start = System.currentTimeMillis();
-      List<Integer> even = numbers
+      even = numbers
           .stream()
           .filter(evenNumber)
           .sorted()
@@ -35,10 +36,11 @@ public class NumberBenchmarkStreams {
   public List<NumberBenchmark> evenParallelNumbers(List<Integer> numbers) {
 
     List<NumberBenchmark> numberBenchmarks = new ArrayList<>();
+    List<Integer> even;
 
     for (int i = 0; i < MAX_NUMBER_TESTS; i++) {
       long start = System.currentTimeMillis();
-      List<Integer> even = numbers
+      even = numbers
           .stream()
           .parallel()
           .filter(evenNumber)
@@ -56,9 +58,10 @@ public class NumberBenchmarkStreams {
   public List<NumberBenchmark> iterateEvenNumbers(List<Integer> numbers) {
 
     List<NumberBenchmark> numberBenchmarks = new ArrayList<>();
+    List<Integer> even;
 
     for (int i = 0; i < MAX_NUMBER_TESTS; i++) {
-      List<Integer> even = new ArrayList<>();
+      even = new ArrayList<>();
       long start = System.currentTimeMillis();
       for (Integer number : numbers) {
         if (number % 2 == 0) {
