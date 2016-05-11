@@ -9,10 +9,10 @@ import java.util.stream.Collectors;
 
 public class NumberBenchmarkStreams {
 
-  private Predicate<Integer> evenNumber = (n -> n % 2 == 0);
-  private final static int MAX_NUMBER_TESTS = 10;
+  private static final Predicate<Integer> evenNumber = (n -> n % 2 == 0);
+  private static final int MAX_NUMBER_TESTS = 10;
 
-  public List<NumberBenchmark> evenNumbers(List<Integer> numbers) {
+  public List<NumberBenchmark> evenNumbers(final List<Integer> numbers) {
 
     List<NumberBenchmark> numberBenchmarks = new ArrayList<>();
 
@@ -25,7 +25,7 @@ public class NumberBenchmarkStreams {
           .collect(Collectors.toList());
 
       numberBenchmarks.add(
-          new NumberBenchmark(
+          NumberBenchmark.createNumberBenchmark(
               even.size(), System.currentTimeMillis() - start, Thread.activeCount()
           ));
     }
@@ -46,7 +46,7 @@ public class NumberBenchmarkStreams {
           .collect(Collectors.toList());
 
       numberBenchmarks.add(
-          new NumberBenchmark(
+          NumberBenchmark.createNumberBenchmark(
               even.size(), System.currentTimeMillis() - start, Thread.activeCount()
           ));
     }
@@ -66,14 +66,14 @@ public class NumberBenchmarkStreams {
         }
       }
 
-      Collections.sort(even, new Comparator<Integer>(){
-        public int compare(Integer firstEven, Integer secondEven){
+      Collections.sort(even, new Comparator<Integer>() {
+        public int compare(Integer firstEven, Integer secondEven) {
           return firstEven.compareTo(secondEven);
         }
       });
 
       numberBenchmarks.add(
-          new NumberBenchmark(
+          NumberBenchmark.createNumberBenchmark(
               even.size(), System.currentTimeMillis() - start, Thread.activeCount()
           ));
     }

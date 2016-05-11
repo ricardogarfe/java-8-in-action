@@ -2,14 +2,18 @@ package org.ricardogarfe.java;
 
 public class NumberBenchmark {
 
-  private int elements;
-  private long elapsedTime;
-  private int activeThreads;
+  private final int elements;
+  private final long elapsedTime;
+  private final int activeThreads;
 
-  public NumberBenchmark(int elements, long elapsedTime, int activeThreads) {
+  private NumberBenchmark(int elements, long elapsedTime, int activeThreads) {
     this.elements = elements;
     this.elapsedTime = elapsedTime;
     this.activeThreads = activeThreads;
+  }
+
+  public static NumberBenchmark createNumberBenchmark(int elements, long elapsedTime, int activeThreads) {
+    return new NumberBenchmark(elements, elapsedTime, activeThreads);
   }
 
   public int getElements() {
@@ -23,6 +27,5 @@ public class NumberBenchmark {
   public int getActiveThreads() {
     return activeThreads;
   }
-
 
 }
