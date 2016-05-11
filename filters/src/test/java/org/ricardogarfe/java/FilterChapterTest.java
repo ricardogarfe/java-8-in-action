@@ -14,4 +14,10 @@ public class FilterChapterTest {
     Boolean isVegan = filterChapter.checkMenuVeganFriendly(dishesUtil.getMenu());
     assertTrue("The menu is not (somewhat) vegetarian friendly!!", isVegan);
   }
+
+  @Test
+  public void testCheckIsHealthyMenu() throws Exception {
+    Boolean isHealthy = filterChapter.checkHealthyMenu(dishesUtil.getMenu());
+    assertTrue("The menu is not Healthy !", isHealthy);
+  }
 }
