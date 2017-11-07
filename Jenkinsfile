@@ -2,9 +2,6 @@ pipeline {
   agent any
   tools { 
     maven 'Maven 3' 
-    jdk 'jdk8'
-    env.JAVA_HOME="${tool 'jdk8'}"
-    env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
   }
   stages {
     stage ('Initialize') {
@@ -24,10 +21,10 @@ pipeline {
       steps {
         sh 'mvn test -Dmaven.test.failure.ignore=true'
       }
-    }
-    stage('Results') {
-      steps {
-        junit(allowEmptyResults: true, testResults: '**/target/surefire-reports/*.xml')
+      post {
+        success {
+            junit 'target/surefire-reports/**/*.xml' 
+          }
       }
     }
   }
