@@ -1,8 +1,10 @@
 pipeline {
   agent any
   tools { 
-    maven 'Maven 3.5.2' 
-    jdk 'jdk8' 
+    maven 'Maven 3' 
+    jdk 'jdk8'
+    env.JAVA_HOME="${tool 'jdk8'}"
+    env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
   }
   stages {
     stage ('Initialize') {
