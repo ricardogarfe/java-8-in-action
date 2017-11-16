@@ -19,3 +19,7 @@ test:
     - codacy-coverage-reporter -l Java -r pythagorean-triples/target/site/jacoco/jacoco.xml --prefix pythagorean-triples/src/main/java/ --projectToken $projectToken
     - codacy-coverage-reporter -l Java -r streams/target/site/jacoco/jacoco.xml --prefix streams/src/main/java/ --projectToken $projectToken
     - codacy-coverage-reporter -l Java -r string-streams/target/site/jacoco/jacoco.xml --prefix string-streams/src/main/java/ --projectToken $projectToken
+
+notify:
+  webhooks:
+    - url: https://webhook.atomist.com/atomist/circle/teams/T7Z55PASE
