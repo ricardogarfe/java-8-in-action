@@ -2,7 +2,7 @@ package org.ricardogarfe.java;
 
 public interface Card extends Comparable<Card> {
 
-  public enum Suit {
+  enum Suit {
     DIAMONDS(1, "Diamonds"),
     CLUBS(2, "Clubs"),
     HEARTS(3, "Hearts"),
@@ -25,7 +25,7 @@ public interface Card extends Comparable<Card> {
     }
   }
 
-  public enum Rank {
+  enum Rank {
     DEUCE(2, "Two"),
     THREE(3, "Three"),
     FOUR(4, "Four"),
@@ -56,7 +56,7 @@ public interface Card extends Comparable<Card> {
     }
   }
 
-  public Card.Suit getSuit();
+  Card.Suit getSuit();
 
-  public Card.Rank getRank();
+  Card.Rank getRank();
 }
