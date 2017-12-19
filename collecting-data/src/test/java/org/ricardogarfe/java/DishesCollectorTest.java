@@ -6,8 +6,6 @@ import org.junit.Test;
 import java.util.IntSummaryStatistics;
 import java.util.Optional;
 
-import static java.util.stream.Collectors.*;
-
 public class DishesCollectorTest {
 
   private final DishesUtil dishesUtil = new DishesUtil();
