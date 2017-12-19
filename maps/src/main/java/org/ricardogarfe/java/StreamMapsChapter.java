@@ -7,7 +7,7 @@ import static java.util.stream.Collectors.toList;
 
 public class StreamMapsChapter {
 
-    public List<String> distinctChars (List<String> words) {
+    public List<String> distinctChars(List<String> words) {
 
         return words.stream()
                 .map(word -> word.split(""))

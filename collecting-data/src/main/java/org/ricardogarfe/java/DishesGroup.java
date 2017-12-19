@@ -10,52 +10,52 @@ import static java.util.stream.Collectors.maxBy;
 
 public class DishesGroup {
 
-  public enum CaloricLevel { DIET, NORMAL, FAT }
+    public Map<Dish.Type, List<Dish>> groupDishesByType(List<Dish> menu) {
+        Map<Dish.Type, List<Dish>> dishesByType =
+                menu.stream().collect(groupingBy(Dish::getType));
 
-  public Map<Dish.Type, List<Dish>> groupDishesByType(List<Dish> menu) {
-    Map<Dish.Type, List<Dish>> dishesByType =
-        menu.stream().collect(groupingBy(Dish::getType));
+        return dishesByType;
+    }
 
-    return dishesByType;
-  }
+    public Map<CaloricLevel, List<Dish>> groupDishesByCaloricLevel(List<Dish> menu) {
+        Map<CaloricLevel, List<Dish>> dishesByCaloricLevel =
+                menu.stream().collect(groupingBy(
+                        dish -> {
+                            if (dish.getCalories() <= 400) return CaloricLevel.DIET;
+                            else if (dish.getCalories() <= 700) return CaloricLevel.NORMAL;
+                            else return CaloricLevel.FAT;
+                        }
+                ));
 
-  public Map<CaloricLevel, List<Dish>> groupDishesByCaloricLevel(List<Dish> menu) {
-    Map<CaloricLevel, List<Dish>> dishesByCaloricLevel =
-        menu.stream().collect(groupingBy(
-            dish -> {
-              if (dish.getCalories() <= 400) return CaloricLevel.DIET;
-              else if (dish.getCalories() <= 700) return CaloricLevel.NORMAL;
-              else return CaloricLevel.FAT;
-            }
-        ));
+        return dishesByCaloricLevel;
+    }
 
-    return dishesByCaloricLevel;
-  }
+    public Map<Dish.Type, Map<CaloricLevel, List<Dish>>> groupByTypeAndCaloricLevel(List<Dish> menu) {
 
-  public Map<Dish.Type, Map<CaloricLevel, List<Dish>>> groupByTypeAndCaloricLevel(List<Dish> menu) {
+        Map<Dish.Type, Map<CaloricLevel, List<Dish>>> dishesByTypeAndCaloricLevel =
+                menu.stream().collect(
+                        groupingBy(Dish::getType,
+                                groupingBy(
+                                        dish -> {
+                                            if (dish.getCalories() <= 400) return CaloricLevel.DIET;
+                                            else if (dish.getCalories() <= 700) return CaloricLevel.NORMAL;
+                                            else return CaloricLevel.FAT;
+                                        }
+                                )
+                        ));
 
-    Map<Dish.Type, Map<CaloricLevel, List<Dish>>> dishesByTypeAndCaloricLevel =
-        menu.stream().collect(
-            groupingBy(Dish::getType,
-              groupingBy(
-                dish -> {
-                  if (dish.getCalories() <= 400) return CaloricLevel.DIET;
-                  else if (dish.getCalories() <= 700) return CaloricLevel.NORMAL;
-                  else return CaloricLevel.FAT;
-                }
-              )
-        ));
+        return dishesByTypeAndCaloricLevel;
+    }
 
-    return dishesByTypeAndCaloricLevel;
-  }
+    public Map<Dish.Type, Optional<Dish>> groupByMostCaloricByType(List<Dish> menu) {
 
-  public Map<Dish.Type, Optional<Dish>> groupByMostCaloricByType(List<Dish> menu) {
+        Map<Dish.Type, Optional<Dish>> mostCaloricByType =
+                menu.stream()
+                        .collect(groupingBy(Dish::getType,
+                                maxBy(comparingInt(Dish::getCalories))));
 
-    Map<Dish.Type, Optional<Dish>> mostCaloricByType =
-        menu.stream()
-            .collect(groupingBy(Dish::getType,
-                maxBy(comparingInt(Dish::getCalories))));
+        return mostCaloricByType;
+    }
 
-    return mostCaloricByType;
-  }
+    public enum CaloricLevel {DIET, NORMAL, FAT}
 }

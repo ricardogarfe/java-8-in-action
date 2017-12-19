@@ -1,40 +1,40 @@
 package org.ricardogarfe.java;
 
-public class PlayingCard implements Card{
+public class PlayingCard implements Card {
 
-  private Suit suit;
-  private Rank rank;
+    private Suit suit;
+    private Rank rank;
 
-  public Suit getSuit() {
-    return null;
-  }
+    public PlayingCard(Suit suit, Rank rank) {
+        this.suit = suit;
+        this.rank = rank;
+    }
 
-  public Rank getRank() {
-    return null;
-  }
+    public Suit getSuit() {
+        return null;
+    }
 
-  public PlayingCard(Suit suit, Rank rank) {
-    this.suit = suit;
-    this.rank = rank;
-  }
+    public Rank getRank() {
+        return null;
+    }
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
-    PlayingCard that = (PlayingCard) o;
+        PlayingCard that = (PlayingCard) o;
 
-    return suit == that.suit && rank == that.rank;
-  }
+        return suit == that.suit && rank == that.rank;
+    }
 
-  @Override
-  public int hashCode() {
-    return ((suit.value()-1)*13)+rank.value();
-  }
+    @Override
+    public int hashCode() {
+        return ((suit.value() - 1) * 13) + rank.value();
+    }
 
-  public int compareTo(Card o) {
-    return this.hashCode() - o.hashCode();
-  }
+    public int compareTo(Card o) {
+        return this.hashCode() - o.hashCode();
+    }
 
 }

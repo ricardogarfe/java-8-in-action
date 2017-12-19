@@ -21,7 +21,7 @@ public class TransactionStreams {
     public List<String> uniqueCitiesFromTraders(List<Transaction> transactions) {
 
         return transactions.stream()
-                .map(transaction ->transaction.getTrader().getCity())
+                .map(transaction -> transaction.getTrader().getCity())
                 .distinct()
                 .collect(Collectors.toList());
     }

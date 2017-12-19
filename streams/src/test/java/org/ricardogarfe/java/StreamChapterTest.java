@@ -28,7 +28,7 @@ public class StreamChapterTest {
 
     }
 
-    @Test(expected= IllegalStateException.class)
+    @Test(expected = IllegalStateException.class)
     public void testConsumeTwiceStreamThrowsException() {
 
         streamChapter.consumeTwiceStreamThrowsException();

@@ -10,24 +10,15 @@ import java.util.Optional;
 
 public class TransactionStreamsTest {
 
-    private TransactionStreams transactionStreams = new TransactionStreams();
-
-    private Integer FILTERED_YEAR = 2011;
-    private String MILAN = "Milan";
-    private String CAMBRIDGE = "Cambridge";
-    private String FIRST_TRADER_NAME = "Alan";
-
     Trader raoul = new Trader("Raoul", "Cambridge");
     Trader mario = new Trader("Mario", "Milan");
     Trader alan = new Trader("Alan", "Cambridge");
     Trader brian = new Trader("Brian", "Cambridge");
-
     List<Trader> traders = Arrays.asList(
             raoul,
             mario,
             alan,
             brian);
-
     List<Transaction> transactions = Arrays.asList(
             new Transaction(brian, 2011, 300),
             new Transaction(raoul, 2012, 1000),
@@ -36,6 +27,11 @@ public class TransactionStreamsTest {
             new Transaction(mario, 2012, 700),
             new Transaction(alan, 2012, 950)
     );
+    private TransactionStreams transactionStreams = new TransactionStreams();
+    private Integer FILTERED_YEAR = 2011;
+    private String MILAN = "Milan";
+    private String CAMBRIDGE = "Cambridge";
+    private String FIRST_TRADER_NAME = "Alan";
 
     //    1. Find all transactions in the year 2011 and sort them by value (small to high).
     @Test

@@ -7,17 +7,17 @@ import java.util.stream.Stream;
 
 public class PythagoreanTripleTest {
 
-  private PythagoreanTriple pythagoreanTriple = new PythagoreanTriple();
+    private PythagoreanTriple pythagoreanTriple = new PythagoreanTriple();
 
-  @Test
-  public void testCalculateTheorem() {
+    @Test
+    public void testCalculateTheorem() {
 
-    Stream<int[]> pythagoreanTriples = pythagoreanTriple.calculateTheorem();
+        Stream<int[]> pythagoreanTriples = pythagoreanTriple.calculateTheorem();
 
-    pythagoreanTriples.limit(5)
-        .forEach(t ->
-            System.out.println(t[0] + ", " + t[1] + ", " + t[2]));
+        pythagoreanTriples.limit(5)
+                .forEach(t ->
+                        System.out.println(t[0] + ", " + t[1] + ", " + t[2]));
 
-    Assert.assertTrue(true);
-  }
+        Assert.assertTrue(true);
+    }
 }
