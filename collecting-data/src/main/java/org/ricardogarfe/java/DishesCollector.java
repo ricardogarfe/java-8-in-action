@@ -46,7 +46,7 @@ public class DishesCollector {
         Comparator.comparingInt(Dish::getCalories);
     Optional<Dish> mostCalorieDish =
         menu.stream()
-            .collect(maxBy(dishCaloriesComparator));
+            .max(dishCaloriesComparator);
 
     return mostCalorieDish;
   }
@@ -54,21 +54,19 @@ public class DishesCollector {
   public Optional<Dish> reduceMaxCaloriesDish(List<Dish> menu) {
 
     Optional<Dish> mostCalorieDish =
-        menu.stream().collect(reducing(
-            (d1, d2) -> d1.getCalories() > d2.getCalories() ? d1 : d2));
+            menu.stream().reduce((d1, d2) -> d1.getCalories() > d2.getCalories() ? d1 : d2);
 
     return mostCalorieDish;
   }
 
   public Integer totalCalories(List<Dish> menu) {
-    int totalCalories = menu.stream().collect(summingInt(Dish::getCalories));
+    int totalCalories = menu.stream().mapToInt(Dish::getCalories).sum();
     return totalCalories;
   }
 
   public Integer reduceTotalCalories(List<Dish> menu) {
 
-    int totalCalories = menu.stream().collect(reducing(
-        0, Dish::getCalories, (i, j) -> i + j));
+    int totalCalories = menu.stream().map(Dish::getCalories).reduce(0, (i, j) -> i + j);
     return totalCalories;
   }
 
