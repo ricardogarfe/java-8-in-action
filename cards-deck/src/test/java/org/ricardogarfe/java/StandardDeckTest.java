@@ -7,7 +7,7 @@ import static org.junit.Assert.assertTrue;
 public class StandardDeckTest {
 
     @Test
-    public void test() throws Exception {
+    public void test() {
         assertTrue("Not False.", true);
     }
 

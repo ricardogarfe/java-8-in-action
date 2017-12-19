@@ -12,10 +12,10 @@ public class TransactionStreamsTest {
 
     private TransactionStreams transactionStreams = new TransactionStreams();
 
-    private static Integer FILTERED_YEAR = 2011;
-    private static String MILAN = "Milan";
-    private static final String CAMBRIDGE = "Cambridge";
-    private static String FIRST_TRADER_NAME = "Alan";
+    private Integer FILTERED_YEAR = 2011;
+    private String MILAN = "Milan";
+    private String CAMBRIDGE = "Cambridge";
+    private String FIRST_TRADER_NAME = "Alan";
 
     Trader raoul = new Trader("Raoul", "Cambridge");
     Trader mario = new Trader("Mario", "Milan");
@@ -39,7 +39,7 @@ public class TransactionStreamsTest {
 
     //    1. Find all transactions in the year 2011 and sort them by value (small to high).
     @Test
-    public void testSortTransactionsByYear() throws Exception {
+    public void testSortTransactionsByYear() {
 
         List<Transaction> transactionSortedByYear = transactionStreams.sortTransactionsByYear(transactions, FILTERED_YEAR);
         Assert.assertTrue("Transactions in 2011 are not correct.", transactionSortedByYear.size() == 2);
@@ -49,7 +49,7 @@ public class TransactionStreamsTest {
 
     //    2. What are all the unique cities where the traders work?
     @Test
-    public void testUniqueCitiesFromTraders() throws Exception {
+    public void testUniqueCitiesFromTraders() {
 
         List<String> expectedCities = Arrays.asList(
                 "Cambridge",
@@ -63,7 +63,7 @@ public class TransactionStreamsTest {
 
     //    3. Find all traders from Cambridge and sort them by name.
     @Test
-    public void testFindTradersFromCitySortByName() throws Exception {
+    public void testFindTradersFromCitySortByName() {
 
         List<Trader> tradersFromCitySortByName = transactionStreams.findTradersFromCitySortByName(transactions, CAMBRIDGE);
         Assert.assertTrue("There aren't Traders in " + CAMBRIDGE, !tradersFromCitySortByName.isEmpty());
@@ -73,7 +73,7 @@ public class TransactionStreamsTest {
 
     //    4. Return a string of all traders’ names sorted alphabetically.
     @Test
-    public void testTraderNamesSortedByName() throws Exception {
+    public void testTraderNamesSortedByName() {
 
         String traderNamesSortedByName = transactionStreams.traderNamesSortedByName(transactions);
         Assert.assertTrue("Incorrect first trader ordered.", traderNamesSortedByName.startsWith(FIRST_TRADER_NAME));
@@ -81,7 +81,7 @@ public class TransactionStreamsTest {
 
     //    5. Are any traders based in Milan?
     @Test
-    public void testCheckTradersByCity() throws Exception {
+    public void testCheckTradersByCity() {
 
         Optional<Trader> traderInCity = transactionStreams.checkTradersByCity(transactions, MILAN);
         Assert.assertTrue("There are no traders in " + MILAN, traderInCity.isPresent());
@@ -89,7 +89,7 @@ public class TransactionStreamsTest {
 
     //    6. Print all transactions’ values from the traders living in Cambridge.
     @Test
-    public void testTransactionValuesFromTradersFromCambridge() throws Exception {
+    public void testTransactionValuesFromTradersFromCambridge() {
 
         List<Integer> transactionValuesFromCambridge = transactionStreams.transactionValuesFromCambridge(transactions);
         Assert.assertTrue("There are no correct transaction values from Cambridge.", transactionValuesFromCambridge.size() == 4);
@@ -99,7 +99,7 @@ public class TransactionStreamsTest {
 
     //    7. What’s the highest value of all the transactions?
     @Test
-    public void testHighestTransactionValue() throws Exception {
+    public void testHighestTransactionValue() {
 
         Integer highestValueExpected = 1000;
         Optional<Integer> highestValue = transactionStreams.highestTransactionValue(transactions);
@@ -111,7 +111,7 @@ public class TransactionStreamsTest {
 
     //    8. Find the transaction with the smallest value.
     @Test
-    public void testSmallestTransactionValue() throws Exception {
+    public void testSmallestTransactionValue() {
 
         Integer smallestValueExpected = 300;
         Optional<Integer> smallestValue = transactionStreams.smallestTransactionValue(transactions);

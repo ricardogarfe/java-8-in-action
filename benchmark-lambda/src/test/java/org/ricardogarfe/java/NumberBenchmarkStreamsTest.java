@@ -23,7 +23,7 @@ public class NumberBenchmarkStreamsTest {
   }
 
   @Test
-  public void testSimpleEvenNumberStream() throws Exception {
+  public void testSimpleEvenNumberStream() {
 
     List<NumberBenchmark> numberBenchmarks = numberBenchmarkStreams.evenNumbers(numbers);
     LongSummaryStatistics longSummaryStatistics = numberBenchmarks.stream().mapToLong(NumberBenchmark::getElapsedTime).summaryStatistics();
@@ -41,7 +41,7 @@ public class NumberBenchmarkStreamsTest {
   }
 
   @Test
-  public void testParallelEvenNumberStream() throws Exception {
+  public void testParallelEvenNumberStream() {
 
     List<NumberBenchmark> numberBenchmarks = numberBenchmarkStreams.evenParallelNumbers(numbers);
     LongSummaryStatistics longSummaryStatistics = numberBenchmarks.stream().mapToLong(NumberBenchmark::getElapsedTime).summaryStatistics();

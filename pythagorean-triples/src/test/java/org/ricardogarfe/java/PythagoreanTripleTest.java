@@ -10,7 +10,7 @@ public class PythagoreanTripleTest {
   private PythagoreanTriple pythagoreanTriple = new PythagoreanTriple();
 
   @Test
-  public void testCalculateTheorem() throws Exception {
+  public void testCalculateTheorem() {
 
     Stream<int[]> pythagoreanTriples = pythagoreanTriple.calculateTheorem();
 

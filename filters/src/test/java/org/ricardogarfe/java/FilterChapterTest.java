@@ -15,26 +15,26 @@ public class FilterChapterTest {
   private final DishesUtil dishesUtil = new DishesUtil();
 
   @Test
-  public void testCheckMenuVeganFriendy() throws Exception {
+  public void testCheckMenuVeganFriendy() {
     Boolean isVegan = filterChapter.checkMenuVeganFriendly(dishesUtil.getMenu());
     assertTrue("The menu is not (somewhat) vegetarian friendly!!", isVegan);
   }
 
   @Test
-  public void testCheckIsHealthyMenu() throws Exception {
+  public void testCheckIsHealthyMenu() {
     Boolean isHealthy = filterChapter.checkHealthyMenu(dishesUtil.getMenu());
     assertTrue("The menu is not Healthy !", isHealthy);
   }
 
   @Test
-  public void testFindAnyVegetarianDish() throws Exception {
+  public void testFindAnyVegetarianDish() {
     Optional<Dish> anyVegetarian = filterChapter.findAnyVegetarianDish(dishesUtil.getMenu());
     assertTrue("There is not any vegetarian dish on menu", anyVegetarian.isPresent());
   }
 
   @Test
-  public void testFindFirsThreeMultiple() throws Exception {
-    Integer expectedFirstSquare = new Integer(9);
+  public void testFindFirsThreeMultiple() {
+    Integer expectedFirstSquare = 9;
     List<Integer> someNumbers = Arrays.asList(1, 2, 3, 4, 5, 6);
 
     Optional<Integer> firstSquareDivisibleByThree = filterChapter.firstSquareDivisibleByThree(someNumbers);

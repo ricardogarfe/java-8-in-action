@@ -23,7 +23,7 @@ public class NumericStreamChapterTest {
             new Dish("salmon", false, 450, Dish.Type.FISH));
 
     @Test
-    public void test() throws Exception {
+    public void test() {
         assertTrue("Not False.", true);
     }
 

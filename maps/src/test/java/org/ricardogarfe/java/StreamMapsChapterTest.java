@@ -13,12 +13,12 @@ public class StreamMapsChapterTest {
     private StreamMapsChapter streamMapsChapter = new StreamMapsChapter();
 
     @BeforeClass
-    public static void setUpBeforeClass() throws Exception {
+    public static void setUpBeforeClass() {
 
     }
 
     @Test
-    public void testDistinctChars() throws Exception {
+    public void testDistinctChars() {
 
         List<String> words = Arrays.asList("Hello", "World");
         List<String> resultDistinctChars = streamMapsChapter.distinctChars(words);
@@ -27,7 +27,7 @@ public class StreamMapsChapterTest {
     }
 
     @Test
-    public void testRetrieveSquaredNumber() throws Exception {
+    public void testRetrieveSquaredNumber() {
 
         List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
         List<Integer> expectedSquared = Arrays.asList(1, 4, 9, 16, 25);

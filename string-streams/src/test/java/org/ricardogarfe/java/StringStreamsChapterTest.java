@@ -13,7 +13,7 @@ public class StringStreamsChapterTest {
   private StringStreamsChapter stringStreamsChapter = new StringStreamsChapter();
 
   @Test
-  public void testCreateStringStream() throws Exception {
+  public void testCreateStringStream() {
 
     stringStreamsChapter.createStringStream();
 
@@ -30,7 +30,7 @@ public class StringStreamsChapterTest {
   }
 
   @Test
-  public void testInfiniteStream() throws Exception {
+  public void testInfiniteStream() {
     Stream.iterate(0, n -> n + 2)
         .limit(10)
         .forEach(System.out::println);
@@ -38,21 +38,21 @@ public class StringStreamsChapterTest {
   }
 
   @Test
-  public void testFibonacciTuples() throws Exception {
+  public void testFibonacciTuples() {
 
     stringStreamsChapter.fibonacciTuples();
     Assert.assertTrue(true);
   }
 
   @Test
-  public void testGenerateInfiniteStream() throws Exception {
+  public void testGenerateInfiniteStream() {
     Stream.generate(Math::random)
         .limit(5)
         .forEach(System.out::println);
   }
 
   @Test
-  public void testFibonacciTuplesIntSupplier() throws Exception {
+  public void testFibonacciTuplesIntSupplier() {
 
     stringStreamsChapter.fibonacciTuplesIntSupplier();
     Assert.assertTrue(true);

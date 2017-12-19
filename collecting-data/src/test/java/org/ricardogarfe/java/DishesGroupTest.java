@@ -13,14 +13,14 @@ public class DishesGroupTest {
   private final DishesUtil dishesUtil = new DishesUtil();
 
   @Test
-  public void testGroupDishesByType() throws Exception {
+  public void testGroupDishesByType() {
 
     Map<Dish.Type, List<Dish>> dishesByType = dishesGroup.groupDishesByType(dishesUtil.getMenu());
     Assert.assertTrue("Types are not correct", !dishesByType.isEmpty());
   }
 
   @Test
-  public void testGroupDishesByCaloricLevel() throws Exception {
+  public void testGroupDishesByCaloricLevel() {
     Map<DishesGroup.CaloricLevel, List<Dish>> dishesByCaloricLevel = dishesGroup.groupDishesByCaloricLevel(dishesUtil.getMenu());
     Assert.assertTrue("Caloric levels are not correct", !dishesByCaloricLevel.isEmpty());
 
@@ -31,7 +31,7 @@ public class DishesGroupTest {
   }
 
   @Test
-  public void testGroupByMostCaloricByType() throws Exception {
+  public void testGroupByMostCaloricByType() {
 
     Map<Dish.Type, Optional<Dish>> mostCaloricByType = dishesGroup.groupByMostCaloricByType(dishesUtil.getMenu());
     Assert.assertTrue("Most caloric types don't exist", !mostCaloricByType.isEmpty());

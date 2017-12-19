@@ -18,7 +18,7 @@ public class StringStreamsChapter {
 
   public long streamFromFile(String relativePath) throws Exception {
 
-    long uniqueWords = 0;
+    long uniqueWords;
 
     try (
         Stream<String> lines =

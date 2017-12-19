@@ -6,7 +6,6 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class StreamChapterTest {
@@ -25,7 +24,7 @@ public class StreamChapterTest {
             new Dish("salmon", false, 450, Dish.Type.FISH));
 
     @BeforeClass
-    public static void setUpBeforeClass() throws Exception {
+    public static void setUpBeforeClass() {
 
     }
 
@@ -36,7 +35,7 @@ public class StreamChapterTest {
     }
 
     @Test
-    public void testFilterDishesMenuByCaloriesJDK7() throws Exception {
+    public void testFilterDishesMenuByCaloriesJDK7() {
 
         List<String> filterDishesResult = streamChapter.filterDishesMenuByCaloriesJDK7(menu);
         assertTrue("There aren't Caloric Dishes on the menu.", !filterDishesResult.isEmpty());
@@ -44,7 +43,7 @@ public class StreamChapterTest {
     }
 
     @Test
-    public void testFilterDishesMenuByCalories() throws Exception {
+    public void testFilterDishesMenuByCalories() {
 
         List<String> filterDishesResult = streamChapter.filterDishesMenuByCalories(menu);
         assertTrue("There aren't Caloric Dishes on the menu.", !filterDishesResult.isEmpty());
@@ -52,7 +51,7 @@ public class StreamChapterTest {
     }
 
     @Test
-    public void testFilterVeganDishes() throws Exception {
+    public void testFilterVeganDishes() {
 
         List<Dish> veganDishes = streamChapter.filterVeganDishes(menu);
 
@@ -62,7 +61,7 @@ public class StreamChapterTest {
     }
 
     @Test
-    public void testFilterUniqueCharsFromList() throws Exception {
+    public void testFilterUniqueCharsFromList() {
 
         String[] stringList = {"Hello", "World"};
         List<String> uniqueChars = streamChapter.filterUniqueCharsFromList(Arrays.asList(stringList));

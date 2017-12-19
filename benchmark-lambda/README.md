@@ -39,7 +39,7 @@ Parallel Statics:	 10000000 even elements computed 10 times
 * Min time:	446
 ```
 
-Tests in [NumberBenchmarkStreamsTest](src/test/org/ricardogarfe/NumberBenchmarkStreamsTest) class.
+Tests in [NumberBenchmarkStreamsTest](src/test/java/org/ricardogarfe/NumberBenchmarkStreamsTest) class.
 
 ## Documentation
 

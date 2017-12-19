@@ -40,13 +40,14 @@ public class BenchmarkTest extends TestCase {
   }
 
   @Before
-  public void setUp() {
+  public void setUp() throws Exception {
+    super.setUp();
 
     peopleList = createPeopleList();
 
     forStart = System.currentTimeMillis();
 
-    List<Person> adultPersonsList = new ArrayList<Person>();
+    List<Person> adultPersonsList = new ArrayList<>();
     for (Person person : peopleList) {
       if (person.getAge() > 18) {
         adultPersonsList.add(person);
