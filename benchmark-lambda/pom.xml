@@ -9,7 +9,6 @@
     <relativePath>../java-8/pom.xml</relativePath>
   </parent>
 
-  <groupId>org.ricardogarfe.java</groupId>
   <artifactId>benchmark-lambda</artifactId>
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>

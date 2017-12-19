@@ -10,7 +10,6 @@
         <relativePath>../java-8/pom.xml</relativePath>
     </parent>
 
-    <groupId>org.ricardogarfe.java</groupId>
     <artifactId>streams</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
