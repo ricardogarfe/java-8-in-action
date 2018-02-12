@@ -12,12 +12,12 @@ test:
   post:
     - sudo apt-get install jq
     - wget -O ~/codacy-coverage-reporter-assembly-latest.jar $(curl https://api.github.com/repos/codacy/codacy-coverage-reporter/releases/latest | jq -r .assets[0].browser_download_url)
-    - java -cp ~/codacy-coverage-reporter-assembly-latest.jar com.codacy.CodacyCoverageReporter -l Java -r collecting-data/build/reports/jacoco/test/jacoco.xml 
-    - java -cp ~/codacy-coverage-reporter-assembly-latest.jar com.codacy.CodacyCoverageReporter -l Java -r maps/build/reports/jacoco/test/jacoco.xml 
-    - java -cp ~/codacy-coverage-reporter-assembly-latest.jar com.codacy.CodacyCoverageReporter -l Java -r numericstreams/build/reports/jacoco/test/jacoco.xml 
-    - java -cp ~/codacy-coverage-reporter-assembly-latest.jar com.codacy.CodacyCoverageReporter -l Java -r pythagorean-triples/build/reports/jacoco/test/jacoco.xml 
-    - java -cp ~/codacy-coverage-reporter-assembly-latest.jar com.codacy.CodacyCoverageReporter -l Java -r streams/build/reports/jacoco/test/jacoco.xml 
-    - java -cp ~/codacy-coverage-reporter-assembly-latest.jar com.codacy.CodacyCoverageReporter -l Java -r string-streams/build/reports/jacoco/test/jacoco.xml 
+    - java -cp ~/codacy-coverage-reporter-assembly-latest.jar com.codacy.CodacyCoverageReporter -l Java -r collecting-data/target/site/jacoco/jacoco.xml 
+    - java -cp ~/codacy-coverage-reporter-assembly-latest.jar com.codacy.CodacyCoverageReporter -l Java -r maps/target/site/jacoco/jacoco.xml 
+    - java -cp ~/codacy-coverage-reporter-assembly-latest.jar com.codacy.CodacyCoverageReporter -l Java -r numericstreams/target/site/jacoco/jacoco.xml 
+    - java -cp ~/codacy-coverage-reporter-assembly-latest.jar com.codacy.CodacyCoverageReporter -l Java -r pythagorean-triples/target/site/jacoco/jacoco.xml 
+    - java -cp ~/codacy-coverage-reporter-assembly-latest.jar com.codacy.CodacyCoverageReporter -l Java -r streams/target/site/jacoco/jacoco.xml 
+    - java -cp ~/codacy-coverage-reporter-assembly-latest.jar com.codacy.CodacyCoverageReporter -l Java -r string-streams/target/site/jacoco/jacoco.xml 
 
 notify:
   webhooks:
