@@ -10,15 +10,14 @@ test:
     # copy the test results to the test results directory.
     - cp -r **/target/surefire-reports/* $CIRCLE_TEST_REPORTS
   post:
-    - curl http://www.jpm4j.org/install/script > jpmInstall.sh
-    - sudo sh jpmInstall.sh
-    - sudo jpm install com.codacy:codacy-coverage-reporter:assembly
-    - codacy-coverage-reporter -l Java -r collecting-data/target/site/jacoco/jacoco.xml --prefix collecting-data/src/main/java/ --projectToken $projectToken
-    - codacy-coverage-reporter -l Java -r maps/target/site/jacoco/jacoco.xml --prefix maps/src/main/java/ --projectToken $projectToken
-    - codacy-coverage-reporter -l Java -r numericstreams/target/site/jacoco/jacoco.xml --prefix numericstreams/src/main/java/ --projectToken $projectToken
-    - codacy-coverage-reporter -l Java -r pythagorean-triples/target/site/jacoco/jacoco.xml --prefix pythagorean-triples/src/main/java/ --projectToken $projectToken
-    - codacy-coverage-reporter -l Java -r streams/target/site/jacoco/jacoco.xml --prefix streams/src/main/java/ --projectToken $projectToken
-    - codacy-coverage-reporter -l Java -r string-streams/target/site/jacoco/jacoco.xml --prefix string-streams/src/main/java/ --projectToken $projectToken
+    - sudo apt-get install jq
+    - wget -O ~/codacy-coverage-reporter-assembly-latest.jar $(curl https://api.github.com/repos/codacy/codacy-coverage-reporter/releases/latest | jq -r .assets[0].browser_download_url)
+    - java -cp ~/codacy-coverage-reporter-assembly-latest.jar com.codacy.CodacyCoverageReporter -l Java -r collecting-data/target/site/jacoco/jacoco.xml 
+    - java -cp ~/codacy-coverage-reporter-assembly-latest.jar com.codacy.CodacyCoverageReporter -l Java -r maps/target/site/jacoco/jacoco.xml 
+    - java -cp ~/codacy-coverage-reporter-assembly-latest.jar com.codacy.CodacyCoverageReporter -l Java -r numericstreams/target/site/jacoco/jacoco.xml 
+    - java -cp ~/codacy-coverage-reporter-assembly-latest.jar com.codacy.CodacyCoverageReporter -l Java -r pythagorean-triples/target/site/jacoco/jacoco.xml 
+    - java -cp ~/codacy-coverage-reporter-assembly-latest.jar com.codacy.CodacyCoverageReporter -l Java -r streams/target/site/jacoco/jacoco.xml 
+    - java -cp ~/codacy-coverage-reporter-assembly-latest.jar com.codacy.CodacyCoverageReporter -l Java -r string-streams/target/site/jacoco/jacoco.xml 
 
 notify:
   webhooks:
