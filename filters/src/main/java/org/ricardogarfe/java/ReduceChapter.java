@@ -11,6 +11,7 @@ public class ReduceChapter {
   }
 
   public Optional<Integer> reduceListWithoutInitialValue(List<Integer> numbers, BinaryOperator<Integer> binaryOperator) {
+    System.out.println("reduceListWithoutInitialValue");
     return numbers.stream().reduce(binaryOperator);
   }
 }
