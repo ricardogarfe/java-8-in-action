@@ -8,6 +8,8 @@
 
 [![CircleCI](https://circleci.com/gh/ricardogarfe/java-8-in-action/tree/master.svg?style=svg)](https://circleci.com/gh/ricardogarfe/java-8-in-action/tree/master)
 
+[ ![Codeship Status for ricardogarfe/java-8-in-action](https://app.codeship.com/projects/93a63230-4212-0136-c629-6a596ad76e32/status?branch=master)](https://app.codeship.com/projects/291459)
+
 Java 8 in Action
 ==================
 
