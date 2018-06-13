@@ -6,6 +6,8 @@
 [![SonarCloud Bugs](https://sonarcloud.io/api/project_badges/measure?project=org.ricardogarfe.java:java-8-in-action&metric=bugs)](https://sonarcloud.io/component_measures/metric/reliability_rating/list?id=org.ricardogarfe.java:java-8-in-action)
 [![SonarCloud Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=org.ricardogarfe.java:java-8-in-action&metric=vulnerabilities)](https://sonarcloud.io/component_measures/metric/security_rating/list?id=org.ricardogarfe.java:java-8-in-action)
 
+[![CircleCI](https://circleci.com/gh/ricardogarfe/java-8-in-action/tree/master.svg?style=svg)](https://circleci.com/gh/ricardogarfe/java-8-in-action/tree/master)
+
 Java 8 in Action
 ==================
 
