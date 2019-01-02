@@ -12,3 +12,7 @@ cache:
   directories:
     - '$HOME/.m2/repository'
     - '$HOME/.sonar/cache'
+
+notifications:
+    webhooks: https://www.travisbuddy.com/
+    on_success: never
