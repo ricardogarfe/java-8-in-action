@@ -6,7 +6,7 @@ jobs: # a collection of steps
     working_directory: ~/ricardogarfe-java-8-in-action # directory where steps will run
 
     docker: # run the steps with Docker
-      - image: circleci/openjdk:8-jdk-browsers # ...with this image as the primary container; this is where all `steps` will run
+      - image: circleci/openjdk:jdk-node-browsers-legacy # ...with this image as the primary container; this is where all `steps` will run
 
     steps: # a collection of executable commands
 
@@ -15,14 +15,14 @@ jobs: # a collection of steps
       - restore_cache: # restore the saved cache after the first run or if `pom.xml` has changed
           key: ricardogarfe-java-8-in-action-{{ checksum "pom.xml" }}
       
-      - run: mvn --fail-never dependency:go-offline || true # gets the project dependencies
+      - run: mvn --fail-never dependency:go-offline # gets the project dependencies
       
       - save_cache: # saves the project dependencies
           paths:
             - ~/.m2
           key: ricardogarfe-java-8-in-action-{{ checksum "pom.xml" }}
       
-      - run: mvn clean verify org.jacoco:jacoco-maven-plugin:report install -Dmaven.test.failure.ignore=true # run the actual tests
+      - run: mvn clean verify org.jacoco:jacoco-maven-plugin:report -Dmaven.test.failure.ignore=true # run the actual tests
 
       - run: mkdir tests-results
 
