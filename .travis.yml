@@ -1,9 +1,9 @@
 language: java
-sudo: false
-install: true
 addons:
   sonarcloud:
     organization: "ricardogarfe-github"
+    token:
+      secure: aVAZAcJ14KGvxeEvUsSma8Rz+f20fWqsJ4xcscH8ZcWlwqyoiL4C0smrC/5IGiWs5a+YaDVfheADGYuVRrcMqWFKhnZDryXS5Q0ErGbm+9HYWQv9fg9pJwkOItOkRlajNh2NV8NBT7ccsVYm9EI5eqzYPpsEthGrXMYbuMv+XosF0fLgpRoZKn56hLiP5oTqx0tbbQY6H7k8Q5+tjFW/Ml6jMV+w4uo4JPx7T7NTfIZ9nxeegnKg7wyKJ1e/+MZKcLPRq1ASDsNIOOotfvqz64LRGuDu/MTmpbX6akMsmn755xruninPiTq05117q7d7M5wv5jQTGSzb/SqPVHatwjLN65ySk1KTWP9nK8Mm3bMQlnVQSNpkmV9wSqbg3xQN/p78Tj20nwd+8Z19CKc/LZQzVbBtMhNWphan8o9Cj4PrGGu2y2EuI8iZH/Eqjz34C75duOjKEY6hOdY+4Gil9Pnx+oWXzCpsjiVBWlPguqj4NdCE72D8r1tFeOjGyhbd7IicriC3UB/hLEV/XSOTffJszIUN4DRRH/F8/lwIYshubjvgN2fb0INQjrYdJATc63z3k7ZvXmnHmfkKybkGm2gvyXduh5dpwXjYwyjiSc0X0T/TIp13r4EKKS32rnUIYhLIabP0fszN0+o4JGNhplViegn9h8Ijb1OUVsJ1LAc=    
 jdk:
   - oraclejdk8
 script:
