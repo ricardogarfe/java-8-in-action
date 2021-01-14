@@ -17,11 +17,4 @@
     <name>filters</name>
     <url>http://maven.apache.org</url>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.ricardogarfe.java</groupId>
-            <artifactId>collecting-data</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-    </dependencies>
 </project>
