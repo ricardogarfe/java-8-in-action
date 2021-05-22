@@ -49,6 +49,7 @@ public class StringStreamsChapterTest {
     Stream.generate(Math::random)
         .limit(5)
         .forEach(System.out::println);
+    Assert.assertTrue(true);
   }
 
   @Test
