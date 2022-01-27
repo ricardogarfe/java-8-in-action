@@ -6,9 +6,7 @@
 [![SonarCloud Bugs](https://sonarcloud.io/api/project_badges/measure?project=org.ricardogarfe.java:java-8-in-action&metric=bugs)](https://sonarcloud.io/component_measures/metric/reliability_rating/list?id=org.ricardogarfe.java:java-8-in-action)
 [![SonarCloud Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=org.ricardogarfe.java:java-8-in-action&metric=vulnerabilities)](https://sonarcloud.io/component_measures/metric/security_rating/list?id=org.ricardogarfe.java:java-8-in-action)
 
-[![CircleCI](https://circleci.com/gh/ricardogarfe/java-8-in-action/tree/master.svg?style=svg)](https://circleci.com/gh/ricardogarfe/java-8-in-action/tree/master)
-
-[ ![Codeship Status for ricardogarfe/java-8-in-action](https://app.codeship.com/projects/93a63230-4212-0136-c629-6a596ad76e32/status?branch=master)](https://app.codeship.com/projects/291459)
+[![codecov](https://codecov.io/gh/ricardogarfe/java-8-in-action/branch/master/graph/badge.svg?token=93PJ4utGmU)](https://codecov.io/gh/ricardogarfe/java-8-in-action)
 
 Java 8 in Action
 ==================

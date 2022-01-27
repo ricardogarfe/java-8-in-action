@@ -13,6 +13,7 @@
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <junit.version>4.13.1</junit.version>
+    <jacoco.maven.plugin.version>0.8.7</jacoco.maven.plugin.version>
   </properties>
 
   <dependencies>
@@ -23,5 +24,39 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+          <groupId>org.jacoco</groupId>
+          <artifactId>jacoco-maven-plugin</artifactId>
+          <version>${jacoco.maven.plugin.version}</version>
+          <executions>
+              <!--
+                  Prepares the property pointing to the JaCoCo runtime agent which
+                  is passed as VM argument when Maven the Surefire plugin is executed.
+              -->
+              <execution>
+                  <id>pre-unit-test</id>
+                  <goals>
+                      <goal>prepare-agent</goal>
+                  </goals>
+              </execution>
+
+              <!--
+                  Ensures that the code coverage report for unit tests is created after
+                  unit tests have been run.
+              -->
+              <execution>
+                  <id>post-unit-test</id>
+                  <phase>test</phase>
+                  <goals>
+                      <goal>report</goal>
+                  </goals>
+              </execution>
+          </executions>
+      </plugin>
+    </plugins>
+  </build>
 
 </project>
