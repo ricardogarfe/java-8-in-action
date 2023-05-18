@@ -12,7 +12,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <junit.version>4.13.1</junit.version>
+    <junit.version>4.13.2</junit.version>
     <jacoco.maven.plugin.version>0.8.7</jacoco.maven.plugin.version>
   </properties>
 
